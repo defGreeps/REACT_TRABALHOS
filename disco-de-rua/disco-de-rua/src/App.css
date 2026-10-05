@@ -1,0 +1,563 @@
+:root {
+  --bg-color: #F4F1EA;       /* Creme/Pergaminho para o fundo */
+  --text-main: #2C241E;      /* Marrom carvão escuro para legibilidade máxima */
+  --text-muted: #5C4D43;     /* Marrom médio para textos secundários */
+  
+  --header-bg: #1A1412;      /* Expresso quase preto (sofisticação) */
+  --header-text: #EAE1D5;    /* Creme claro para contraste no cabeçalho */
+  
+  --accent-color: #A6643F;   /* Cobre/Ferrugem (chama atenção, mantém o rústico) */
+  --accent-hover: #8B4F2E;   /* Cobre escurecido para interação */
+  
+  --card-bg: #FFFFFF;        /* Fundo limpo para destacar o produto */
+  --border-color: #D7CFC4;   /* Borda sutil */
+  
+  /* Tipografia */
+  --font-heading: 'Playfair Display', 'Georgia', serif; /* Elegante, clássica */
+  --font-body: 'Lato', 'Helvetica Neue', sans-serif;    /* Limpa, legível */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+   CABEÇALHO & BARRA DE NAVEGAÇÃO
+========================================= */
+.header {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding: 1.5rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid var(--accent-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header .logo {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-bar ul {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar a {
+  color: var(--header-text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-bar a:hover {
+  color: var(--accent-color);
+}
+
+/* =========================================
+   GRID DO CATÁLOGO
+========================================= */
+.catalog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.5rem;
+  padding: 4rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   CARTÃO DE CATÁLOGO (PRODUTO)
+========================================= */
+.catalog-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px; /* Bordas levemente arredondadas, não exageradas */
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Espaço reservado para a capa do Vinil */
+.card-image-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Vinis são quadrados perfeitos */
+  background-color: #E0D9CC; 
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--text-main);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.2;
+}
+
+.card-artist {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 1rem 0;
+}
+
+.card-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: auto; /* Empurra o preço e o botão para o fundo do cartão */
+  margin-bottom: 1.25rem;
+}
+
+/* =========================================
+   BOTÕES (Facilmente reconhecíveis)
+========================================= */
+.btn {
+  display: block;
+  width: 100%;
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+  text-align: center;
+  padding: 0.85rem;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+/* =========================================
+   BARRA DE FILTROS DO CATÁLOGO
+========================================= */
+.catalog-filter-bar {
+  background-color: var(--card-bg); 
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.2rem 5%;
+  display: flex;
+  justify-content: center; /* Centraliza os filtros na tela */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.catalog-filter-bar ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap; /* Permite que os filtros quebrem de linha em telas menores */
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.catalog-filter-bar a {
+  color: var(--text-muted); /* Marrom médio para não conflitar com o cabeçalho */
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.catalog-filter-bar a:hover {
+  color: var(--accent-color);
+}
+
+.catalog-filter-bar a.active {
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+/* =========================================
+   PÁGINA INICIAL: HERO SECTION (IMAGEM GRANDE)
+========================================= */
+.hero-section {
+  box-sizing: border-box;
+  height: 65vh; /* Ocupa 65% da altura da tela */
+  min-height: 450px;
+  background-color: var(--header-bg); /* Cor de fundo caso a imagem demore a carregar */
+  
+  /* Gradiente escuro por cima da imagem para garantir leitura, seguido por uma imagem genérica profissional de discos */
+  background-image: 
+    linear-gradient(rgba(26, 20, 18, 0.6), rgba(26, 20, 18, 0.8)), 
+    url('https://images.unsplash.com/photo-1603048297172-c92544798d5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); 
+  
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--header-text);
+  padding: 0 5%;
+}
+
+.hero-content h1 {
+  font-family: var(--font-heading);
+  font-size: 3.8rem;
+  margin: 0 0 1rem 0;
+  letter-spacing: 1px;
+}
+
+.hero-content p {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  margin: 0 auto 2.5rem auto;
+  color: #EAE1D5;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+/* Ajuste do botão para a Hero Section */
+.btn.hero-btn {
+  display: inline-block;
+  width: auto;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+/* =========================================
+   PÁGINA INICIAL: SEÇÃO DE INTRODUÇÃO
+========================================= */
+.intro-section {
+  max-width: 800px;
+  margin: 5rem auto;
+  padding: 0 5%;
+  text-align: center;
+}
+
+.intro-section h2 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+}
+
+.intro-section p {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* Ajustes para telas menores (Celulares) */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .intro-section p {
+    text-align: left; /* Melhora a leitura no celular */
+  }
+}
+/* =========================================
+   PÁGINA DO CARRINHO
+========================================= */
+.cart-container {
+  max-width: 800px;
+  margin: 4rem auto;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.cart-header-container {
+  display: flex;
+  justify-content: space-between; /* Empurra um pra esquerda e outro pra direita */
+  align-items: center; /* Centraliza verticalmente */
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+ 
+.cart-header {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.btn-limpar {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.btn-limpar:hover {
+  color: #D9534F; /* Tom de vermelho */
+  border-color: #D9534F;
+  background-color: #FDF4F4; /* Fundo avermelhado super clarinho */
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0 2rem;
+  margin: 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cart-item-info strong {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text-main);
+}
+
+.cart-item-info p {
+  color: var(--text-muted);
+  margin: 0.25rem 0 0 0;
+  font-size: 0.9rem;
+}
+
+.cart-item-price {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+.cart-footer {
+  padding: 2rem;
+  background-color: #FAFAFA; /* Um leve contraste para o rodapé do carrinho */
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+}
+
+.cart-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+}
+
+/* =========================================
+   MODAL DE CHECKOUT
+========================================= */
+/* Fundo escuro transparente que cobre a tela toda */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(26, 20, 18, 0.7); /* Cor escura baseada no seu --header-bg */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Garante que fique por cima de tudo */
+}
+
+/* A caixa branca do modal */
+.modal-content {
+  background-color: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 8px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h3 {
+  font-family: var(--font-heading);
+  color: var(--text-main);
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Botões lado a lado no modal */
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Estilo do botão de cancelar */
+.btn-cancelar {
+  flex: 1;
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 0.85rem;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cancelar:hover {
+  background-color: #f5f5f5;
+  color: var(--text-main);
+}
+
+/* Ajusta o botão principal para ocupar metade do espaço */
+.modal-actions .btn {
+  flex: 1;
+}
+
+/* =========================================
+   PÁGINA DE CONTATO
+========================================= */
+.contato-container {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 5%;
+}
+
+.contato-header {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--text-main);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.contato-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+}
+
+/* Grid divide a área em 3 colunas iguais */
+.contato-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; /* Espaço entre as colunas */
+}
+
+/* Cartão individual */
+.contato-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* Foto redonda com borda na cor de destaque */
+.contato-foto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  border: 4px solid var(--accent-color);
+}
+
+/* Informações de Exibição */
+.contato-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Remove a linha divisória do último item */
+.info-group:last-child {
+  border-bottom: none;
+}
+
+.info-group strong {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  text-transform: uppercase;
+}
+
+.info-group span {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* Responsividade: transforma em 1 coluna no celular */
+@media (max-width: 768px) {
+  .contato-grid {
+    grid-template-columns: 1fr;
+  }
+}
